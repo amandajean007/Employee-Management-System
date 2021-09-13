@@ -1,0 +1,19 @@
+{
+  "name": "employee-management-system",
+  "version": "1.0.0",
+  "description": "Tracks and stores employee data.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandajean007/Employee-Tracker.git"
+  },
+  "author": "Amanda McBee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amandajean007/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/amandajean007/Employee-Tracker#readme"
+}
