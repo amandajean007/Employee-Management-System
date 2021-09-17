@@ -1,6 +1,7 @@
 // imports required data to work
 const express = require('express');
 const mysql = require('mysql2');
+const pw = require('../password/.env')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,11 +16,14 @@ const db = mysql.createConnection(
     {
       host: 'localhost',
       user: 'root',
-      password: '',
-      database: 'books_db'
+      password: 'Leah&Maya104618',
+      database: 'employees_db'
     },
-    console.log(`Connected to the books_db database.`)
+    console.log(`Connected to the employees_db database.`)
   );
+
+
+
 
 // sets port up to be worked on
 app.listen(PORT, () => {
