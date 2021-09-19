@@ -17,9 +17,10 @@ Open integrated terminal for file and run 'npm start'.
 ## Examples of Use <a name="examples"></a>
 https://user-images.githubusercontent.com/85036414/133915902-79524a41-5a81-455b-88ed-168ef4527d14.mp4
 ## Technologies <a name="technologies"></a>
-#### -Javascript
-#### -mySQL2
-#### -inquirer
+ - Javascript
+ - MySQL2
+ - Inquirer
+ - console.table
 ## License <a name="license"></a>
 MIT License
 ## Contributions <a name="contributions"></a>
