@@ -25,7 +25,18 @@ const connect = mysql.createConnection(
     findAllDepartments() {
          return this.connect.promise().query('SELECT * FROM departments');
     }
-    
+    // view all roles
+    findAllRoles() {
+        return this.connect.promise().query('SELECT * FROM roles');
+    }
+    // view all employees
+    findAllEmployees() {
+        return this.connect.promise().query('SELECT * FROM employees');
+    }
+    // add a department
+    createDepartment(department) {
+        return this.connect.promise().query('INSERT INTO departments SET ?', department);
+    }
   }
   
 module.exports = new DB(connect);

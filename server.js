@@ -40,7 +40,7 @@ require('console.table');
       } else if (answers.directory === 'Update Employee Role') {
           updateEmployeeRole();
       } else if (answers.directory === 'Quit') {
-          exit();
+          quit();
       }
   })
 }
@@ -49,22 +49,55 @@ runPrompt();
 
 function viewAllDepartments() {
   db.findAllDepartments().then(([row]) => {
-      console.table(row);
+    console.table(row);
   }).then(() => {
     runPrompt();
   });
 }
 
-// function viewAllRoles()
+function viewAllRoles() {
+  db.findAllRoles().then(([row]) => {
+    console.table(row);
+  }).then(() => {
+    runPrompt();
+  });
+}
 
-// function viewAllEmployees()
+function viewAllEmployees() {
+  db.findAllEmployees().then(([row]) => {
+    console.table(row);
+  }).then(() => {
+    runPrompt();
+  });
+}
 
-// function addDepartment()
+function addDepartment() {
+  inquirer.prompt([{
+    name: 'name',
+    message: "What is the department's name?"
+  }]).then((response) => {
+    db.createDepartment(response).then(() => {
+      runPrompt();
+    });
+  });
+}
 
-// function addRole()
+// function addRole() {
+//   inquirer.prompt([{
+//     name: 'title',
+//     message: "What is the new role?"
+//   }]).then((response) => {
+//     db.createDepartment(response).then(() => {
+//       runPrompt();
+//     });
+//   });
+// }
 
 // function addEmployee()
 
 // function updateEmployeeRole()
 
-// function quit()
+function quit() {
+  console.log('Bye');
+  process.exit();
+}
