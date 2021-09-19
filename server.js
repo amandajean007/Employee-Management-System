@@ -2,10 +2,11 @@
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 require('console.table');
+// const { updateE } = require('./db/connection');
 
 
 // Use inquirer to prompt questions
-  // function runPrompt() {
+   function runPrompt() {
     inquirer.prompt([
         {
             type: 'list',
@@ -24,33 +25,33 @@ require('console.table');
         }
     ])
     .then((answers) => {
-      if (answers.choice === 'View all departments') {
+      if (answers.directory === 'View all departments') {
           viewAllDepartments();
-      } else if (answers.choice === 'View all roles') {
+      } else if (answers.directory === 'View all roles') {
           viewAllRoles();
-      } else if (answers.choice === 'View all employees') {
+      } else if (answers.directory === 'View all employees') {
           viewAllEmployees();
-      } else if (answers.choice === 'Add a department') {
+      } else if (answers.directory === 'Add a department') {
           addDepartment();
-      } else if (answers.choice === 'Add a role') {
+      } else if (answers.directory === 'Add a role') {
           addRole();
-      } else if (answers.choice === 'Add an employee') {
+      } else if (answers.directory === 'Add an employee') {
           addEmployee();
-      } else if (answers.choice === 'Update Employee Role') {
+      } else if (answers.directory === 'Update Employee Role') {
           updateEmployeeRole();
-      } else if (answers.choice === 'Quit') {
+      } else if (answers.directory === 'Quit') {
           exit();
       }
   })
+}
 
-// Use db query to collect answers from inquirer
-// db.query('')
+runPrompt();
 
 function viewAllDepartments() {
-  db.findAllDepartment().then(([row]) => {
+  db.findAllDepartments().then(([row]) => {
       console.table(row);
   }).then(() => {
-    console.log('Success!');
+    runPrompt();
   });
 }
 

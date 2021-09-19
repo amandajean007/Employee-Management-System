@@ -22,7 +22,10 @@ const connect = mysql.createConnection(
         this.connect = connect;
     }
     // view all departments 
-    findAllDepartment() {
+    findAllDepartments() {
          return this.connect.promise().query('SELECT * FROM departments');
     }
+    
   }
+  
+module.exports = new DB(connect);
