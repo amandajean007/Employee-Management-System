@@ -1,9 +1,22 @@
 // Required Imports
+var express = require('express')
+var app = express()
+var compression = require('compression')
 const inquirer = require('inquirer');
 const db = require('./db/connection');
 require('console.table');
 // const { updateE } = require('./db/connection');
-
+app.use(compression({ filter: shouldCompress }))
+ 
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+ 
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
 
 // Use inquirer to prompt questions
    function runPrompt() {
@@ -44,7 +57,6 @@ require('console.table');
       }
   })
 }
-
 runPrompt();
 
 function viewAllDepartments() {
@@ -110,7 +122,7 @@ function addRole() {
                   }
               ]).then((res) => {
                   const newRole = {
-                      department_id:  res.name,
+                      departments_id:  res.name,
                       title: newRoleTitle,
                       salary: newRoleSalary
                   };
@@ -118,7 +130,7 @@ function addRole() {
               }).then(() => runPrompt());
           });
       });
-  }
+}
 
 function addEmployee() {
   inquirer.prompt([
@@ -169,8 +181,7 @@ function addEmployee() {
             manager_id: respo.managers
         };
         db.createEmployee(newEmployee);
-      })
-      .then(() => runPrompt());
+      }).then(() => runPrompt());
     })
   })
 }
